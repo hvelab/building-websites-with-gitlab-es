@@ -23,9 +23,10 @@ Assuming there were no problems at this stage
 (e.g. asking for a page which doesn't exist, or being unable to reach the server),
 our browser receives and interprets this information
 to render and display the webpage on our screen.
-(A web developer would probably be horrified to read such a gross oversimplification,
+
+<i class="bi-alert-triangle"></i> A web developer would probably be horrified to read such a gross oversimplification,
 which is just one reason why
-web developers are not the target audience of this tutorial.)
+web developers are not the target audience of this tutorial.
 
 The page displayed by the web browser is the result of combining
 **HTML** - a hierarchical format describing the structural elements of the page and their raw content - with

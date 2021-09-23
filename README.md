@@ -1,4 +1,4 @@
-# Building Websites with Jekyll and GitHub/GitLab
+# Building Websites with GitLab
 
 Lesson material, the rendered lesson is hosted [here](https://grp-bio-it-workshops.embl-community.io/building-websites-with-gitlab).
 
