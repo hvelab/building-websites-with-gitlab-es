@@ -5,10 +5,13 @@ exercises: 0
 questions:
 - "How can I write content for my webpages?"
 - "How do I link to other pages?"
-  objectives:
-- "Create simple pages with formatted text"
-  keypoints:
+objectives:
+- "create simple pages of formatted text"
+keypoints:
 - "Markdown is an relatively easy way to write formatted text"
+- "Markdown and HTML tags can be used together in a single page"
+- "I recommend writing Markdown links 'reference-style'"
+- "The landing page for a website is conventionally named `index.md`"
 ---
 
 # Markdown
