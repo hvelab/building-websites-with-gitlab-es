@@ -14,6 +14,7 @@ keypoints:
 - "The landing page for a website is conventionally named `index.md`"
 ---
 
+# Authoring
 - vanilla text
 - adding a title
 - bold & italic

@@ -24,7 +24,7 @@ Assuming there were no problems at this stage
 our browser receives and interprets this information
 to render and display the webpage on our screen.
 
-<i class="bi-alert-triangle"></i> A web developer would probably be horrified to read such a gross oversimplification,
+A web developer would probably be horrified to read such a gross oversimplification,
 which is just one reason why
 web developers are not the target audience of this tutorial.
 
@@ -309,7 +309,5 @@ finish creating the repo.
 GitHub will then setup the repo and it should create the repo called `group-website` with a `README.md` file and a `LICENSE` file.
 
 ![Github repository for the group website](../fig/group_website_repo.png){: .image-with-shadow width="800px" }
-
-[qwantz-easter-egg-ext]: https://chrome.google.com/webstore/detail/dinosaur-comics-easter-eg/bojkkeeefjmeogpgnlomodfkkfkfhabj
 
 {% include links.md %}
