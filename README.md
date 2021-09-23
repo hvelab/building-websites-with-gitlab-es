@@ -1,13 +1,12 @@
 # Building Websites with Jekyll and GitHub/GitLab
 
-Lesson material.
-
+Lesson material, the rendered lesson is hosted [here](https://grp-bio-it-workshops.embl-community.io/building-websites-with-gitlab).
 
 ## Maintainer(s)
 
 Current maintainer of this lesson is
 
-* Toby Hodges
+* Lisanna Paladin
 
 ## Authors
 
