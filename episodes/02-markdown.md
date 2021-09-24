@@ -24,8 +24,8 @@ readable.
 This might be one reason for Markdown having become the language of choice
 for formatted user input on websites like, for example:
 - [Stack Exchange](https://stackexchange.com/)
-- [GitHub](https://github.com/)
-- [GitLab](https://about.gitlab.com/).
+- [GitLab](https://about.gitlab.com/)
+- [GitHub](https://github.com/).
 
 
 # Where to Start Writing Markdown?
@@ -33,33 +33,35 @@ A lot of tools for rendering Markdown source code exist.
 Rendering is the process of generating a nice view of the content
 using the style information included in the source text.
 Chances are high, your editor can do this.
-As we are working towards authoring websites using Jekyll and GitHub pages,
-we will use GitHub straight away for learning the basics of Markdown.
-The GitHub project you created in the last episode contains a file `README.md`.
+As we are working towards authoring websites using GitLab pages,
+we will use GitLab straight away for learning the basics of Markdown.
+The GitLab project you created in the last episode contains a file `README.md`.
+Click on the file name to access it.
 
-The image below shows the projects default view.
-This view includes a rendered view of the content inside the file `README.md`.
-Your project should look quite similar except for the red circle around the pencil symbol.
+The image below shows the default view.
+This view includes a rendered view of the content inside the file `README.md`, like the one in our project homepage.
 
-![On the homepage of a GitHub repository, the edit button is positioned to the top right of the README preview](../fig/group_website_repo_edit.png){: .image-with-shadow width="900px" }
+![README preview](../fig/gitlab_readme.png){: .image-with-shadow width="900px" }
 
+The buttons on the right allow you to interact with the file and visualisation. The first couple of buttons,
+the ones with the icons, allow you to switch between `Display source` and `Display rendered file`. Over with the mouse
+on them to display these two messages in tooltips. The source is the non rendered view of our file. We can edit it
+through the blue `Edit` button. Click it.
 
-Click on that pencil symbol to open an editing interface of your project's `README.md` file.
-Once we've clicked the pencil symbol, GitHub will open that file in the editing interface.
+![Editing interface of the group websites README file](../fig/gitlab_edit_readme.png){: .image-with-shadow width="900px" }
 
-![Editing interface of the group websites README file](../fig/group_website_readme_edit.png){: .image-with-shadow width="900px" }
+We can change the content and have a look at the rendered view by clicking the `Preview` tab on top.
 
-We can change the content and have a look at the rendered view by clicking the _Preview changes_ tab.
+![Preview of the rendered content of the group websites README file](../fig/gitlab_edit_readme_preview.png){: .image-with-shadow width="900px" }
 
-![Preview of the rendered content of the group websites README file](../fig/group_website_readme_render.png){: .image-with-shadow width="900px" }
+Let's add `Some **bold** font` and see what happens when we preview it using the preview tab. What happened to the world bold?
 
-Let's add `Some **bold** font` and see what happens when we preview it using the preview tab.
-If you check the "Show diff" box on the upper-right hand side, GitHub will show green vertical bars visually highlighting the new content.
-To save the content to the file `README.md`, scroll down a bit and search for a _Commit changes_ menu
-at the bottom of the page.
-After having changed something, the commit menu looks like this:
-
-![Commit menu for changes done in the GitHub web interface is located at the bottom of the website](../fig/group_website_readme_commit.png){: .image-with-shadow width="900px" }
+To save the content to the file `README.md`, we should click the `Commit changes` button at the bottom of the page.
+Please notice: this is not a simple "Save" button, but an actual commit. This version of the project will be stored in
+git with the `Commit message` that you will specify in the commit menu here and in the branch you settle as `Target branch`.
+We only have the main branch for the moment - so that choice is obvious - and the commit message is precompiled with the
+name of the file you just edited. You may want to be more specific in your commit message, but for the moment let's go
+with the default option provided. Commit this change.
 
 > ## Writing a Commit Message
 >
@@ -68,15 +70,17 @@ After having changed something, the commit menu looks like this:
 >
 {: .callout}
 
-Commit this change to the `main` branch.
+![After commiting README changes](../fig/gitlab_readme_committed.png){: .image-with-shadow width="900px" }
+
+The interface redirects you to the main project page. On the top, a message says "Your changes have been successfully
+committed." Our changes were included in the README file, that now shows the second line with the bold font.
 
 # Writing Markdown
 
 Now that we know about the editing interface and preview tab of our projects `README.md`
 we can use it as a text editor and investigate selected Markdown features.
 
-Our `README.md` already contains vanilla text and
-two formatting features:
+Our `README.md` already contains text and two formatting features:
 - Heading `# group-website`
 - Emphasis using `**bold**`.
 
@@ -85,7 +89,7 @@ Add the following to your `README.md` file.
 
 ~~~
 # group-website
-Repo for learning how to make websites with Jekyll pages
+Repo for learning how to make websites with GitLab pages
 
 ## Learning Markdown
 
@@ -106,10 +110,7 @@ are caused by two trailing spaces at the end of a line.
 
 You can then click the preview tab again to see how the formatting renders.
 
-![Preview of the formatting added to the README](../fig/markdown_preview_formatting.png){: .image-with-shadow width="900px" }
-
-If you click the `Show diff` checkbox in the right corner, GitHub will include a preview of differences too -
-the green bar indicates added lines, the red bar indicates deleted lines, and yellow - lines that have been modified.
+![Preview of the formatting added to the README](../fig/gitlab_learning_markdown.png){: .image-with-shadow width="900px" }
 
 > ## Markdown Trailing Spaces Are Meaningful
 >
@@ -140,15 +141,10 @@ the green bar indicates added lines, the red bar indicates deleted lines, and ye
 >
 {: .callout}
 
-To keep this addition to our `README.md` we need to commit these changes to save them.
-Scroll down to the bottom of the page, add a commit message if you wish, and then commit to the `main` branch.
-
-![Committing the formatting added to the README](../fig/committing_formatting_addition_to_readme.png){: .image-with-shadow width="800px" }
-
-Let's do an exercise to try out writing more markdown.
+You can commit these changes to save them. But first, let's do an exercise to try out writing more markdown.
 
 > ## Exercise: Try Out Markdown
-> Use [this cheatsheet][github-flavored-markdown] to add the following to your `README.md`:
+> Use [this cheatsheet][gitlab-flavored-markdown] to add the following to your `README.md`:
 >
 > - Another second level heading
 > - Some text under that second level heading that includes an link and ~~strikethrough~~ text.
@@ -160,7 +156,7 @@ Let's do an exercise to try out writing more markdown.
 > > For example your markdown might look like the following:
 > > ~~~
 > > ## More info on the lesson
-> > You can find this lesson [here](https://carpentries-incubator.github.io/jekyll-pages-novice/).
+> > You can find this lesson [here](https://grp-bio-it-workshops.embl-community.io/building-websites-with-gitlab/).
 > >
 > > ### Four reasons you should learn Markdown:
 > >
@@ -172,7 +168,6 @@ Let's do an exercise to try out writing more markdown.
 > > ![Carpentries Logo](https://github.com/carpentries/carpentries.org/raw/main/images/TheCarpentries-opengraph.png)
 > > ~~~
 > > {: .language-markdown }
-> > ![Rendered solution to the Markdown exercise](../fig/markdown_exercise.png){: .image-with-shadow width="800px" }
 > >
 > {: .solution }
 {: .challenge }
@@ -203,14 +198,10 @@ Let's do an exercise to try out writing more markdown.
 >
 {: .callout}
 
-We will continue to use Markdown and learn more throughout the rest of the lesson.
-Though later we will find we need HTML again for some features.
-
-> ## Markdown Cheatsheet
->
-> Markdown offers a variety of formatting features.
-> Have a look at this [cheatsheet][github-flavored-markdown] to get an overview or look things up.
-{: .callout}
+We will continue to use Markdown and learn more throughout the rest of the lesson. Whether you decide to structure your
+website through Markdown-based technologies or HTML, you will still need to know some basics of Markdown to edit your
+README file. The README file will provide an essential guide - shown in the landing page of your project - for your
+collaborators and also for you to understand what the project is about and how to contribute.
 
 > ## Markdown Flavours
 >The initial description of Markdown was informal and contained certain ambiguities so over the years [different Markdown
@@ -218,22 +209,22 @@ Though later we will find we need HTML again for some features.
 >appeared to support various syntax features and extensions. As a consequence, the syntax from one variant may not
 >be interpreted as expected in another - you have to be aware which one is being used by a particular platform. Here are
 >a few well-known variants:
->   - [GitHub-flavored Markdown][github-flavored-markdown] (used on this lesson and by GitHub)
->   - [GitLab-flavored Markdown][gitlab-flavored-markdown] (used by GitLab)
+>   - [GitLab-flavored Markdown][gitlab-flavored-markdown] (used on this lesson and by GitLab)
+>   - [GitHub-flavored Markdown][github-flavored-markdown] (used by GitHub)
 >   - [Kramdown][kramdown] (a fast, Ruby, open source implementation released under the MIT licence)
-      {: .callout}
+>
+> Mardown is also the language of the collaborative notes platform available at EMBL. You can acces it
+> [here](https://pad.bio-it.embl.de/). The platform is based on [CodiMD](https://github.com/hackmdio/codimd).
+{: .callout}
 
-> ## Optional Exercise: Add Your Repository Details to CodiMD
+> ## Exercise: Add Your Repository Details to CodiMD
 >
-> If your instructors are using _CodiMD_ (or _HackMD_ or any other Markdown-based shared document platform)
-> to take notes during this workshop,
-> use Markdown syntax to add a link in that document to the repository you are using
-> to follow along with this lesson.
-> The link text should be your GitHub username, and the target your repository.
-> Your instructors will direct you towards the appropriate location in the
-> document to add your link.
->
+> Use Markdown syntax to add a link in the collaborative notes document you are using to follow along with this lesson.
+> The link text should be your GitLab username, and the target your repository.
 {: .challenge }
 
+[kramdown]: https://kramdown.gettalong.org/
+[gitlab-flavored-markdown]: https://docs.gitlab.com/ee/user/markdown.html
+[github-flavored-markdown]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 {% include links.md %}
