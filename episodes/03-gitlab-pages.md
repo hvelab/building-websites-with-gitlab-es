@@ -206,7 +206,7 @@ Wheter it's public or not, we should be able to visualise our own website. Click
 > >
 > > Optional question: the `.css` file location is specified in the `.html` file, through:
 > > `<link rel="stylesheet" href="style.css">`.
->
+> >
 > {: .solution }
 {: .challenge }
 
