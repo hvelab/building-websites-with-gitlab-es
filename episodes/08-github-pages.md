@@ -4,9 +4,9 @@ teaching: 0
 exercises: 0
 questions:
 - "How do I publish my pages via GitHub?"
-objectives:
-- "publish Markdown files as HTML on the web with GitHub Pages"
-keypoints:
+  objectives:
+- "Publish Markdown files as HTML on the web with GitHub Pages"
+  keypoints:
 - "GitHub serves pages generated from `.md` files on a branch specified by the user"
 ---
 
@@ -130,11 +130,11 @@ We are now ready to start adding more content to our website. Let's do some exer
 > > 1. Edit `index.md` file to look something like:
        > >
        > >    ~~~
-> >    # Building Websites in GitHub
-> >
-> >    ## Description
-> >    This is an example website built while learning how to use Jekyll and GitHub Pages.
-> >    ~~~
+       > >    # Building Websites in GitHub
+       > >
+       > >    ## Description
+       > >    This is an example website built while learning how to use Jekyll and GitHub Pages.
+       > >    ~~~
        > >    {: .language-markdown }
 > >
 > > 2. Go to your website. It should now look like:
@@ -192,24 +192,24 @@ are both valid link targets
        > >    Edit `about.md` file to look something like:
        > >
        > >    ~~~
-> >    # About
-> >
-> >    ## Project
-> >    This research project is all about teaching you how to create websites with GitHub pages.
-> >
-> >    ## Funders
-> >    We gratefully acknowledge funding from the XYZ Founding Council, under grant number 'abc'.
-> >
-> >    ## Cite us
-> >    You can cite the project as:
-> >
-> >    > *The Carpentries 2019 Annual Report. Zenodo. https://doi.org/10.5281/zenodo.3840372*
-> >
-> >    ## Contact us
-> >
-> >    - Email: [team@carpentries.org](mailto:team@carpentries.org)
+       > >    # About
+       > >
+       > >    ## Project
+       > >    This research project is all about teaching you how to create websites with GitHub pages.
+       > >
+       > >    ## Funders
+       > >    We gratefully acknowledge funding from the XYZ Founding Council, under grant number 'abc'.
+       > >
+       > >    ## Cite us
+       > >    You can cite the project as:
+       > >
+       > >    > *The Carpentries 2019 Annual Report. Zenodo. https://doi.org/10.5281/zenodo.3840372*
+       > >
+       > >    ## Contact us
+       > >
+       > >    - Email: [team@carpentries.org](mailto:team@carpentries.org)
 > >    - Twitter: [@thecarpentries](https://twitter.com/thecarpentries)
-> >    ~~~
+       > >    ~~~
        > >    {: .language-markdown }
        > >
        > >    Note how we used various Markdown syntax: quoted text (`>`), italic font (`*`) and external links
@@ -218,13 +218,13 @@ are both valid link targets
 > > 2. Edit `index.md` to add a link to `about.md`.
        > >
        > >    ~~~
-> >    # Building Websites in GitHub
-> >
-> >    ## Description
-> >    This is an example website built while learning how to use Jekyll and GitHub Pages.
-> >
-> >    More details about the project are available from the [About page](about).
-> >    ~~~
+       > >    # Building Websites in GitHub
+       > >
+       > >    ## Description
+       > >    This is an example website built while learning how to use Jekyll and GitHub Pages.
+       > >
+       > >    More details about the project are available from the About page.
+       > >    ~~~
        > >    {: .language-markdown }
 > >
 > > 3. Go to your website and click the link to 'About' page. It should look like:

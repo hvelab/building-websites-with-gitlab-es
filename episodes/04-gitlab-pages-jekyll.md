@@ -4,9 +4,9 @@ teaching: 0
 exercises: 0
 questions:
 - "How do I publish web pages through GitLab and Jekyll?"
-  objectives:
+objectives:
 - "publish Markdown files as HTML on the web with GitHub Pages"
-  keypoints:
+keypoints:
 - "Through Jekyll, GitLab serves pages generated from `.md` files"
 ---
 
