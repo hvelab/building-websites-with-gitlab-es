@@ -146,14 +146,12 @@ Wheter it's public or not, we should be able to visualise our own website. Click
 ![Simple website view](../fig/html_simple_view.png){: .image-with-shadow width="600px" }
 
 > ## Exercise: Compare with your sketch
->
 > Does the website you just deployed look as you thought it would, given the html code in the index file?
 > Did you think that something else would be shown? Discuss with the colleague next to you.
 >
 {: .challenge }
 
 > ## Exercise: The plain-html template
->
 > GitLab provides a series of templates of web pages deployed through Pages. One of them is called "plain-html", you
 > can access it at [this link](https://gitlab.com/pages/plain-html). The general structure is quite similar to the one
 > we just used. Go to the `public` folder. There are two files here, one `style.css` file and one `index.html` file.
