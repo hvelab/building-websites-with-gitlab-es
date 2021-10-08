@@ -35,18 +35,28 @@ image: ruby:latest
 
 pages:
   script:
-  - gem install jekyll
-  - jekyll build -d public
+    - gem install bundler
+    - bundle install
+    - bundle exec jekyll build -d public
   artifacts:
     paths:
-    - public
+      - public
   only:
-  - main
+    - main
 ~~~
 {: .language-yaml }
 
 This code requires the script to run on the environment of the latest Ruby version, installs the Jekyll gem, and builds the
-site to the public path. The result affects only the main branch.
+site to the public path (creating the folder remotely, you should not worry about it at this point).
+The result affects only the main branch.
+
+The execution of this pipeline also requires a `Gemfile`. Create it in the root folder with the following content:
+~~~
+source "https://rubygems.org"
+
+gem "jekyll"
+~~~
+{: .language-shell }
 
 In brief, but we will look into it in more detail, Jekyll looks for text files that begin with a header formatted like this:
 
@@ -142,14 +152,14 @@ a variable in curly braces as `{% raw %}{{ variable }}{% endraw %}`.
 Create a `index.md` file in the root folder, with the following content:
 ~~~
 {% raw %}---
-name: Index
+title: My first Jekyll page
 ___{% endraw %}
 
 # Building Websites with Jekyll and GitLab
 
 ## Description
 {% raw %}{{ site.description }}{% endraw %}
-Welcome to {% raw %}{{ page.name }}{% endraw %}
+Welcome to {% raw %}{{ page.title }}{% endraw %}
 
 Have any questions about what we do? [We'd love to hear from you!]({% raw %}mailto:{{ site.email }}{% endraw %})
 ~~~
@@ -160,62 +170,59 @@ Your project should include the following files:
 ![Basic Jekyll](../fig/basic_files_jekyll.png){: .image-with-shadow width="600px" }
 
 Commit and push your changes, then monitor the pipeline execution and check the final result at your
-`https://<your user name>.embl-community.io/group-website` url.
+`https://<your user name>.embl-community.io/group-website` URL.
 
+Now, we would like to create another page of this website. Ideally, our website will have multiple pages and
+therefore, to keep things in order, we will create the `pages` folder to store them. In this folder, create an
+`about.md` file with the following content:
+~~~
+{% raw %}---
+title: About
+permalink: /about/
+---{% endraw %}
 
+# About
 
+## Project
 
-___
+{% raw %}{{ site.description }}{% endraw %}
 
-1. Modify `index.md` file to make use of our global parameters like this:
+## Funders
 
-   ~~~
-   # Building Websites in GitHub
+We gratefully acknowledge funding from the XYZ Founding Council, under grant number 'abc'.
 
-   ## Description
-   {% raw %}{{ site.description }}{% endraw %}
+## Cite us
 
-   More details about the project are available from the [About page](about).
+You can cite the project as:
 
-   Have any questions about what we do? [We'd love to hear from you!]({% raw %}mailto:{{ site.email }}{% endraw %})
-   ~~~
-   {: .language-markdown }
+>    *The Carpentries 2019 Annual Report. Zenodo. https://doi.org/10.5281/zenodo.3840372*
 
-2. We can use the same parameter in different pages. Let's reuse `{% raw %}{{ site.description }}{% endraw %}` and
-   `{% raw %}{{ site.email }}{% endraw %}` in `about.md` like this:
+## Contact us
 
-   ~~~
-   ---
-   layout: page
-   title: About
-   permalink: /about/
-   ---
-   # About
+- Email: [{% raw %}{{ site.email }}{% endraw %}](mailto:{% raw %}{{ site.email }}{% endraw %})
+- Twitter: [@thecarpentries](https://twitter.com/thecarpentries)
+~~~
+{: .language-markdown }
 
-   ## Project
+Note that the URL location of this page is specified in the header, through the `permalink` attribute.
 
-   {% raw %}{{ site.description }}{% endraw %}
+This is the current aspect of your folders:
 
-   ## Funders
+![About Jekyll](../fig/about-jekyll-pages.png){: .image-with-shadow width="600px" }
 
-   We gratefully acknowledge funding from the XYZ Founding Council, under grant number 'abc'.
+Now, we should edit the `index.md` file to include a link to this new about page, in order to be able to reach it
+from the main page. Add a line the `index.md` to include:
+~~~
+More details about the project are available from the [About page](about).
+~~~
+{: .language-markdown }
 
-   ## Cite us
+The link in this line will redirect to `https://<your user name>.embl-community.io/group-website/about`, that is
+the URL of our new about page.
 
-   You can cite the project as:
-
-   >    *The Carpentries 2019 Annual Report. Zenodo. https://doi.org/10.5281/zenodo.3840372*
-
-   ## Contact us
-
-   - Email: [{% raw %}{{ site.email }}{% endraw %}](mailto:{% raw %}{{ site.email }}{% endraw %})
-   - Twitter: [@thecarpentries](https://twitter.com/thecarpentries)
-   ~~~
-   {: .language-markdown }
-
-3. Go to your website to see the changes.
-4. Note that site parameters will not render nicely when viewing files in GitHub (they will be displayed as text
-   `{% raw %}{{ site.PARAMETER_NAME }}{% endraw %}` rather than the parameter's rendered value) but will in the website.
+Commit, push and go to your website to see the changes.
+Note that site parameters will not render nicely when viewing files in GitHub (they will be displayed as text
+`{% raw %}{{ site.PARAMETER_NAME }}{% endraw %}` rather than the parameter's rendered value) but will in the website.
 
 > ## Exercise: Create a Global Twitter Parameter
 > In `about.md` we have a Twitter URL under the 'Contact us' section. That's one piece of information that could go into
@@ -223,18 +230,17 @@ ___
 > Make changes to your website to extract Twitter URL as a global parameter.
 > > ## Solution
 > > 1. Add parameter twitter to `_config.yml`:
-       > >
-       > >    ~~~
+> >    ~~~
 > >    description: "This research project develops training materials for reseachers wanting to learn to build project
 > >    websites in GitHub with GitHub Pages."
 > >    email: "team@carpentries.org"
 > >    twitter: "https://twitter.com/thecarpentries"
 > >    ~~~
-       > >    {: .language-yaml}
+> >    {: .language-yaml}
 > >
 > > 2. Make use of the twitter parameter in `about.md`:
-       > >
-       > >    ~~~
+> >
+> >    ~~~
 > >    # About
 > >
 > >    ## Project
@@ -256,17 +262,20 @@ ___
 > >    - Email: [{% raw %}{{ site.email }}{% endraw %}](mailto:{% raw %}{{ site.email }}{% endraw %})
 > >    - Twitter: [{% raw %}{{ site.twitter }}{% endraw %}]({% raw %}{{ site.twitter }}{% endraw %})
 > >    ~~~
-       > >    {: .language-markdown }
+> >    {: .language-markdown }
 > >
 > > 3. Note that you should not see any changes to your website really. However, you can now access your Twitter URL from
-       > > any website page, should you need to.
-       > {: .solution}
-       {: .challenge}
+> > any website page, should you need to.
+> >
+> {: .solution}
+{: .challenge}
 
 > ## Reuse and Reduce
 > Jekyll's global parameters are a useful way to keep all your site-wide configuration in
 > a single place (even if you only use them once). In combination with Jekyll layouts/templates (to be covered in the next episode) they are a great way of creating reusable markup snippets that can be repeated on multiple or even on every page of your website. Reuse helps you reduce the amount of code you have to write.
 {: .callout}
+
+---
 
 ## When Things Go Wrong
 
