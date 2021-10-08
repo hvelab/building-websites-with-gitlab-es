@@ -210,6 +210,8 @@ Wheter it's public or not, we should be able to visualise our own website. Click
 > {: .solution }
 {: .challenge }
 
+## Useful links
+
 You have the minimal tools now to be able to play around with HTML and css. You can copy the two files
 from the last exercise [template](https://gitlab.com/pages/plain-html) into your repository and try to edit
 the text size, the navbar color, add links or text formatting. If you decide to fork this repository to experiment,
@@ -218,10 +220,9 @@ and to compile them carefully): "If you forked this project for your own use, pl
 __Settings__ and remove the forking relationship, which won't be necessary unless you want to contribute back to
 the upstream project."
 
-> ## GitLab Pages templates
->
-> You can alreayd start
->
-{: .callout}
+An extensive tutorial about HTML elements, including examples of forms, media and links embedding, can be found at
+[w3schools](https://www.w3schools.com/html/default.asp). In addition to this one, many other resources provide
+HTML tutorials, you can definitely choose one that fits your tastes to learn more.
+
 
 {% include links.md %}
