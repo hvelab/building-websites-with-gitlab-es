@@ -218,4 +218,10 @@ and to compile them carefully): "If you forked this project for your own use, pl
 __Settings__ and remove the forking relationship, which won't be necessary unless you want to contribute back to
 the upstream project."
 
+> ## GitLab Pages templates
+>
+> You can alreayd start
+>
+{: .callout}
+
 {% include links.md %}

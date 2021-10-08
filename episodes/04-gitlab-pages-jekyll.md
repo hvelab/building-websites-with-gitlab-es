@@ -26,9 +26,9 @@ and its scripting language called [Liquid](https://shopify.github.io/liquid/basi
 ## Global Parameters
 
 Also in this case, ee will trigger and customise our deployment from the `.gitlab-ci.yml` file. You can decide to edit your
-previous version of the `group-website` repository or to create a new one. Follow the steps in "Setting up a project" in the
-[introduction](https://grp-bio-it-workshops.embl-community.io/building-websites-with-gitlab/01-introduction/index.html)
-if you want to do so. Otherwise, just replace the `.gitlab-ci.yml` file content with:
+previous version of the `group-website` repository, but we suggest to create a new one. Follow the steps in
+"Setting up a project" in the [introduction](https://grp-bio-it-workshops.embl-community.io/building-websites-with-gitlab/01-introduction/index.html)
+if you want to do so. Create/change the `.gitlab-ci.yml` file content with:
 
 ~~~
 image: ruby:latest
@@ -36,7 +36,7 @@ image: ruby:latest
 pages:
   script:
   - gem install jekyll
-  - jekyll build -d public/
+  - jekyll build -d public
   artifacts:
     paths:
     - public
@@ -119,9 +119,9 @@ Let's create some configuration parameters for our website.
 2. Add parameters `description` and `email` to it as:
 
 ~~~
-description: "This project develops training materials for reseachers wanting to learn to build project
-websites in GitLab Pages."
-email: "team@carpentries.org"
+description: This project develops training materials for reseachers wanting to learn to build project
+websites in GitLab Pages.
+email: team@carpentries.org
 ~~~
 {: .language-yaml}
 
@@ -139,24 +139,31 @@ a variable in curly braces as `{% raw %}{{ variable }}{% endraw %}`.
 > (a list of all pages).
 {: .callout}
 
-Let's make use of global parameters in our web page. If you are working in a completely new repository, create a
-`public` folder. If you are editing the previous version of our website, just delete the content there.
-
-3. Create a `index.md` file in the `public` folder, with the following content:
-
+Create a `index.md` file in the root folder, with the following content:
 ~~~
-# Building Websites in GitHub
+{% raw %}---
+name: Index
+___{% endraw %}
+
+# Building Websites with Jekyll and GitLab
 
 ## Description
 {% raw %}{{ site.description }}{% endraw %}
-
-More details about the project are available from the [About page](about).
+Welcome to {% raw %}{{ page.name }}{% endraw %}
 
 Have any questions about what we do? [We'd love to hear from you!]({% raw %}mailto:{{ site.email }}{% endraw %})
 ~~~
 {: .language-markdown }
 
-4. Commit and push your changes.
+Your project should include the following files:
+
+![Basic Jekyll](../fig/basic_files_jekyll.png){: .image-with-shadow width="600px" }
+
+Commit and push your changes, then monitor the pipeline execution and check the final result at your
+`https://<your user name>.embl-community.io/group-website` url.
+
+
+
 
 ___
 
@@ -178,6 +185,11 @@ ___
    `{% raw %}{{ site.email }}{% endraw %}` in `about.md` like this:
 
    ~~~
+   ---
+   layout: page
+   title: About
+   permalink: /about/
+   ---
    # About
 
    ## Project
