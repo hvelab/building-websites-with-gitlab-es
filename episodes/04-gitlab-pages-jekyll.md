@@ -5,9 +5,9 @@ exercises: 0
 questions:
 - "How do I publish web pages through GitLab and Jekyll?"
 objectives:
-- "publish Markdown files as HTML on the web with GitHub Pages"
+- "Publish Markdown files as HTML on the web with GitHub Pages"
 keypoints:
-- "Through Jekyll, GitLab serves pages generated from `.md` files"
+- "Through Jekyll, GitLab serves pages are generated from `.md` files"
 ---
 
 [Jekyll](https://jekyllrb.com/) is a powerful static site generator that may be behind GitLab Pages. It creates static HTML
