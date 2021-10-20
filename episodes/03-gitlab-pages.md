@@ -31,24 +31,6 @@ project's `Pipelines` (we will do this later). You can also add any command to y
 you to do in the remote server pretty much anything you do on your local machine. We will how some examples on how to run
 custom build commands through the `.gitlab-ci.yml.` file later on in this lesson.
 
-> ## Git branches and GitLab CI files
->
-> You can have a distinct `.gitlab-ci.yml` for each project - but you could even have distinct GitLab CI configurations
-> for each branch. This means you could test your script in parallel branches before pushing to your master branch.
-> If the build succeeds, you merge. If it doesn't, you can make adjustments and try building again without messing up
-> your main branch.
->
-{: .callout}
-
-> ## Validating the gitlab-ci.yml file
->
-> Before you push any `.gitlab-ci.yml` to your project, you can validate its syntax with the tool called
-> [CI Lint](https://docs.gitlab.com/ee/ci/lint.html). You need to be logged into your account to have access to this tool.
-> It's found by navigating to your project's Pipelines: there is a button at the top-right of your screen. You can
-> read through the [full documentation](http://doc.gitlab.com/ee/ci/yaml/README.html) for .gitlab-ci.yml for more information.
->
-{: .callout}
-
 It is time to start configuring our project for deployment. In this lesson, we will work on our local instance of the
 project (in your own computer), to be able to add to each commit changes in multiple files simultaneously. To do so,
 you will need to _clone_ your repository locally, check the [git novice](https://swcarpentry.github.io/git-novice/)
@@ -61,7 +43,7 @@ cd group-website
 ~~~
 {: .language-bash }
 
-Ad keep working in your cloned directory. You can add and edit your files via `vim` or from any editor that you like -
+And keep working in your cloned directory. You can add and edit your files via `vim` or from any editor that you like -
 it doesn't have to be launched from the terminal, but remember to keep the terminal open for when you will have to push
 the changes back to the remote.
 
@@ -83,6 +65,24 @@ pages:
 What this code is doing is creating a job called "pages" telling GitLab to __deploy the website__ content in `public`,
 __whenever a commit is pushed__ and __only to the main branch__. It doesn't have much to do but looking at the content
 in public, hence the "script" configuration is basically none (it just echoes "Nothing to do" to the terminal).
+
+> ## Validating the gitlab-ci.yml file
+>
+> Before you push any `.gitlab-ci.yml` to your project, you can validate its syntax with the tool called
+> [CI Lint](https://docs.gitlab.com/ee/ci/lint.html). You need to be logged into your account to have access to this tool.
+> It's found by navigating to your project's Pipelines: there is a button at the top-right of your screen. You can
+> read through the [full documentation](http://doc.gitlab.com/ee/ci/yaml/README.html) for .gitlab-ci.yml for more information.
+>
+{: .callout}
+
+> ## Git branches and GitLab CI files
+>
+> You can have a distinct `.gitlab-ci.yml` for each project - but you could even have distinct GitLab CI configurations
+> for each branch. This means you could test your script in parallel branches before pushing to your master branch.
+> If the build succeeds, you merge. If it doesn't, you can make adjustments and try building again without messing up
+> your main branch.
+>
+{: .callout}
 
 Next, we will create the `public` folder, containing an `index.html` file. You can do so from the terminal through:
 
