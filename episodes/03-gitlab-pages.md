@@ -78,7 +78,7 @@ in public, hence the "script" configuration is basically none (it just echoes "N
 > ## Git branches and GitLab CI files
 >
 > You can have a distinct `.gitlab-ci.yml` for each project - but you could even have distinct GitLab CI configurations
-> for each branch. This means you could test your script in parallel branches before pushing to your master branch.
+> for each branch. This means you could test your script in parallel branches before pushing to your main branch.
 > If the build succeeds, you merge. If it doesn't, you can make adjustments and try building again without messing up
 > your main branch.
 >
