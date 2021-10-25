@@ -150,7 +150,7 @@ release = '1.0'
 
 html_theme = 'alabaster'
 ~~~
-{: .language-python }
+{: .language-bash }
 
 For a full list of options that can be specified in this file, check the
 [documentation](https://www.sphinx-doc.org/en/master/usage/configuration.html).
