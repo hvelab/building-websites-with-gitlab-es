@@ -173,60 +173,6 @@ Your project should include the following files:
 Commit and push your changes, then monitor the pipeline execution and check the final result at your
 `https://<your user name>.embl-community.io/group-website` URL.
 
-Now, we would like to create another page of this website. Ideally, our website will have multiple pages and
-therefore, to keep things in order, we will create the `pages` folder to store them. In this folder, create an
-`about.md` file with the following content:
-
-~~~
-{% raw %}---
-title: About
-permalink: /about/
----{% endraw %}
-
-# About
-
-## Project
-
-{% raw %}{{ site.description }}{% endraw %}
-
-## Funders
-
-We gratefully acknowledge funding from the XYZ Founding Council, under grant number 'abc'.
-
-## Cite us
-
-You can cite the project as:
-
->    *The Carpentries 2019 Annual Report. Zenodo. https://doi.org/10.5281/zenodo.3840372*
-
-## Contact us
-
-- Email: [{% raw %}{{ site.email }}{% endraw %}](mailto:{% raw %}{{ site.email }}{% endraw %})
-- Twitter: [@thecarpentries](https://twitter.com/thecarpentries)
-~~~
-{: .language-markdown }
-
-Note that the URL location of this page is specified in the header, through the `permalink` attribute.
-
-This is the current aspect of your folders:
-
-![About Jekyll](../fig/about-jekyll-pages.png){: .image-with-shadow width="600px" }
-
-Now, we should edit the `index.md` file to include a link to this new about page, in order to be able to reach it
-from the main page. Add a line the `index.md` to include:
-
-~~~
-More details about the project are available from the [About page](about).
-~~~
-{: .language-markdown }
-
-The link in this line will redirect to `https://<your user name>.embl-community.io/group-website/about`, that is
-the URL of our new about page.
-
-Commit, push and go to your website to see the changes.
-Note that site parameters will not render nicely when viewing files in GitHub (they will be displayed as text
-`{% raw %}{{ site.PARAMETER_NAME }}{% endraw %}` rather than the parameter's rendered value) but will in the website.
-
 > ## Exercise: Create a Global Twitter Parameter
 > In `about.md` we have a Twitter URL under the 'Contact us' section. That's one piece of information that could go into
 > global parameters in `_config.yml` as you may want to repeat it on a footer of every page.
@@ -272,11 +218,6 @@ Note that site parameters will not render nicely when viewing files in GitHub (t
 > >
 > {: .solution}
 {: .challenge}
-
-> ## Reuse and Reduce
-> Jekyll's global parameters are a useful way to keep all your site-wide configuration in
-> a single place (even if you only use them once). In combination with Jekyll layouts/templates (to be covered in the next episode) they are a great way of creating reusable markup snippets that can be repeated on multiple or even on every page of your website. Reuse helps you reduce the amount of code you have to write.
-{: .callout}
 
 ## Local Parameters
 
@@ -348,6 +289,66 @@ Between these triple-dashed lines, you can overwrite predefined variables (like 
 > {: .solution}
 {: .challenge}
 
+## Adding new pages
+
+The next step will be to create another page of this website. Ideally, our website will have multiple pages and
+therefore, to keep things in order, we will create the `pages` folder to store them. In this folder, create an
+`about.md` file with the following content:
+
+~~~
+{% raw %}---
+title: About
+permalink: /about/
+---{% endraw %}
+
+# About
+
+## Project
+
+{% raw %}{{ site.description }}{% endraw %}
+
+## Funders
+
+We gratefully acknowledge funding from the XYZ Founding Council, under grant number 'abc'.
+
+## Cite us
+
+You can cite the project as:
+
+>    *The Carpentries 2019 Annual Report. Zenodo. https://doi.org/10.5281/zenodo.3840372*
+
+## Contact us
+
+- Email: [{% raw %}{{ site.email }}{% endraw %}](mailto:{% raw %}{{ site.email }}{% endraw %})
+- Twitter: [@thecarpentries](https://twitter.com/thecarpentries)
+~~~
+{: .language-markdown }
+
+Note that the URL location of this page is specified in the header, through the `permalink` attribute.
+
+This is the current aspect of your folders:
+
+![About Jekyll](../fig/about-jekyll-pages.png){: .image-with-shadow width="600px" }
+
+Now, we should edit the `index.md` file to include a link to this new about page, in order to be able to reach it
+from the main page. Add a line the `index.md` to include:
+
+~~~
+More details about the project are available from the [About page](about).
+~~~
+{: .language-markdown }
+
+The link in this line will redirect to `https://<your user name>.embl-community.io/group-website/about`, that is
+the URL of our new about page.
+
+Commit, push and go to your website to see the changes.
+Note that site parameters will not render nicely when viewing files in GitHub (they will be displayed as text
+`{% raw %}{{ site.PARAMETER_NAME }}{% endraw %}` rather than the parameter's rendered value) but will in the website.
+
+> ## Reuse and Reduce
+> Jekyll's global parameters are a useful way to keep all your site-wide configuration in
+> a single place (even if you only use them once). In combination with Jekyll layouts/templates (to be covered in the next episode) they are a great way of creating reusable markup snippets that can be repeated on multiple or even on every page of your website. Reuse helps you reduce the amount of code you have to write.
+{: .callout}
 
 ## Useful links
 
