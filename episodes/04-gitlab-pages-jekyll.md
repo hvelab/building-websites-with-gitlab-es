@@ -278,6 +278,77 @@ Note that site parameters will not render nicely when viewing files in GitHub (t
 > a single place (even if you only use them once). In combination with Jekyll layouts/templates (to be covered in the next episode) they are a great way of creating reusable markup snippets that can be repeated on multiple or even on every page of your website. Reuse helps you reduce the amount of code you have to write.
 {: .callout}
 
+## Local Parameters
+
+In addition to global (site-wide) parameters available via the `site` global variable, Jekyll makes _local_ (page-specific) information available to you via the `page` variable.
+Some of these are pre-defined - like `page.title`, which gives you the title of the page that is currently active/being visited. Others you can define yourself. Check this [list of predefined page parameters](https://jekyllrb.com/docs/variables#page-variables).
+
+You can define local parameters using YAML notation within a Markdown page by including it in a page header and delimiting the header with triple-dashed lines `---`. These headers are called *front matter* and are
+used to set variables and metadata on individual pages in your Jekyll site.
+
+> ## Front matter
+> From [Jekyll's website](https://jekyllrb.com/docs/front-matter/):
+>
+>   >   Any file that contains a YAML front matter block will be processed by Jekyll as a special file. The front matter must be the first thing in the file and must take the form of valid YAML set between triple-dashed lines.
+{: .callout}
+
+> ## Global and Local Parameters Are Case Sensitive
+> It is important to note that the parameters used in the sites are case sensitive.
+> By convention, usually they are all lowercase characters.
+{: .callout}
+
+Here is an example:
+
+~~~
+---
+layout: post
+title: "My first blog post"
+author: "Danger Mouse"
+---
+~~~
+{: .language-yaml }
+
+Between these triple-dashed lines, you can overwrite predefined variables (like `page.layout` or `page.title`) or create custom ones you need locally on the page (like `page.author`). These variables will then be available for you to access using Liquid's tags (e.g. `{% raw %}{{{% endraw %} page.title {% raw %}}}{% endraw %}` ) further down in the file and also in any files that include this one.  Note that these variables are only accessible on that page.  You will get an error if you try to reference a `page.variable` that was defined on a different page.
+
+> ## Exercise: Practice With Local Variables
+>
+> Let's practice making and using local variables. Think of a local variable you may want to use only in your `about.md` or `index.md` page.
+> If you cannot think of any, create a local variable called 'lesson-example' with the value
+> of 'https://carpentries.github.io/lesson-example/' and reference it in your `index.md`.
+>
+> What did you add to your `index.md` to create this variable?
+> Where did you add the front matter in your `index.md`?
+> How did you reference that variable?
+>
+> > ## Solution
+> >
+> > Create a YAML header at the very top of `index.md` and add the `lesson-example` variable in between the
+> > triple-dash delimiters. You can then reference the value within your `index.md` page as
+`{% raw %}{{{% endraw %} page.lesson-example {% raw %}}}{% endraw %}`. Your file should now look like:
+> >
+> > ~~~
+> > ---
+> > lesson-example: "https://carpentries.github.io/lesson-example/"
+> > ---
+> >
+> > # Building Websites in GitHub
+> >
+> > ## Description
+> > {% raw %}{{ site.description }}{% endraw %}
+> >
+> > More details about the project are available from the [About page](about).
+> >
+> > See some [examples of our work]({% raw %}{{{% endraw %} page.lesson-example {% raw %}}}{% endraw %}).
+> >
+> > Have any questions about what we do? [We'd love to hear from you!]({% raw %}mailto:{{ site.email }}{% endraw %})
+> > ~~~
+> > {: .language-markdown }
+> >
+> > Note that this variable is not accessible from `about.md` page and is local to `index.md`.
+> {: .solution}
+{: .challenge}
+
+
 ## Useful links
 
 This was just meant to be a very basic tutorial. The possibility of sites customisation with Jekyll go far beyond what
