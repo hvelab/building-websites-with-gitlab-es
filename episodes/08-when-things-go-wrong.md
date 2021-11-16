@@ -1,3 +1,14 @@
+---
+title: "When things go wrong"
+teaching: 0
+exercises: 0
+questions: "How do I troubleshoot errors in the GitLab pipelines?"
+objectives:
+- "Get feedback from GitLab about why a pipeline failed"
+keypoints:
+- "If a pipeline fails, GitLab will provide you useful feedback on why"
+---
+
 
 ## When Things Go Wrong
 

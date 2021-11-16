@@ -4,9 +4,9 @@ teaching: 0
 exercises: 0
 questions:
 - "How do I publish web pages through GitLab and Jupyter books?"
-  objectives:
-- "Publish Jupyter "notebooks" as HTML on the web with GitHub Pages"
-  keypoints:
+objectives:
+- "Publish Jupyter notebooks as HTML on the web with GitHub Pages"
+keypoints:
 - "Through Jupyter books, you'll be able to integrate interactive components and code in your web pages"
 ---
 
