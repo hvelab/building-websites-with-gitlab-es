@@ -18,6 +18,7 @@ The templates that we developed together are available in our GitLab platform:
 - [Plain HTML template](https://git.embl.de/grp-bio-it/template_pages_html)
 - [Jekyll template](https://git.embl.de/grp-bio-it/template-pages-jekyll)
 - [Sphinx template](https://git.embl.de/grp-bio-it/template-pages-sphinx)
+- [Jupyter book](https://git.embl.de/grp-bio-it/template-jupyter-book)
 
 They might be slightly enriched compared to what we went through during this lesson, for example the plain HTML template
 also features a `.css` file, but they are kept minimal on purpose. If you want to use them as a base for your own
