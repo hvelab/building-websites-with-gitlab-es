@@ -274,11 +274,11 @@ There are two ways of creating a new project:
 
 Click the "+" button in the navbar on top and choose "new project"
 
-![Plus button](../fig/gitlab-new-navbar.png){: .image-with-shadow width="100px" }
+![Plus button](../fig/gitlab-new-navbar.png){: .image-with-shadow width="600px" }
 
 **or**, if you are on the projects page, click the "New project" button
 
-![New project button](../fig/gitlab-new-project.png){: .image-with-shadow width="200px" }
+![New project button](../fig/gitlab-new-project.png){: .image-with-shadow width="600px" }
 
 You will be redirected to a page that provides three options:
 1. Create blank project
