@@ -42,13 +42,13 @@ pages:
     paths:
       - public
   only:
-    - master
+    - main
 ~~~
 {: .language-yaml }
 
 This code requires the script to run on the environment of the latest Ruby version, installs the Jekyll gem, and builds the
 site to the public path (creating the folder remotely, you should not worry about it at this point).
-The result affects only the master branch.
+The result affects only the main branch.
 
 The execution of this pipeline also requires a `Gemfile`. Create it in the root folder with the following content:
 ~~~

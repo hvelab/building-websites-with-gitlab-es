@@ -128,7 +128,7 @@ pipeline. On the menu on the left, choose `CI/CD > Pipelines` to visualise it.
 ![First running pipeline](../fig/first_pipeline_running.png){: .image-with-shadow width="600px" }
 
 Since we stopped and checked what our remote folder looked like, your pipeline may already be
-![passed](../fig/passed.png){: .image-with-shadow width="20px" }. If not, just wait until it becomes so.
+![passed](../fig/passed.png){: .image-with-shadow width="100px" }. If not, just wait until it becomes so.
 
 Your first website was deployed successfully! Wonder where you can see it? Go to `Settings > Pages`. The URL of your
 website is reported under `Access pages`. It should be: `https://<your user name>.embl-community.io/group-website`.
