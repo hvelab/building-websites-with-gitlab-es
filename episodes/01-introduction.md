@@ -87,7 +87,7 @@ a web browser will make a best guess regarding the layout of HTML elements on th
 > - *links*, using the important `a` (anchor) tag to link to sections in the same page or other pages within the same or external websites.
 >
 > The [list of valid HTML tags][html5-tags] is rather extensive,
-> covering a rich range of features powering today's [world wide web][www-wikipedia].
+> covering a rich range of features powering today's world wide web.
 {: .callout }
 
 > ## Exercise: Writing Basic HTML
@@ -258,10 +258,10 @@ Before we get into working we must first create a project to work in.
 This project is similar to a folder on your computer, the main differences
 being that the folder lives on the web in GitLab/GitHub (though you can
 also keep a copy on your computer if needed) and that folder is using
-a version control software called [`git`][git] to track changes to the files.
+a version control software called [`git`](https://git-scm.com/) to track changes to the files.
 For our purposes we will mostly be ignoring the version control software,
 though it can be handy if you need to revert to old versions
-(see [Software Carpentry - Version Control with Git][swc-git] for an introduction).
+(see [Software Carpentry - Version Control with Git](https://swcarpentry.github.io/git-novice/) for an introduction).
 In this lesson we will be working with this folder on the web to control
 the website we will be creating.
 
@@ -347,5 +347,6 @@ include some sort of *data*, even just people names. The technologies and templa
 
 [qwantz-easter-egg-ext]: https://chrome.google.com/webstore/detail/dinosaur-comics-easter-eg/bojkkeeefjmeogpgnlomodfkkfkfhabj
 [js4ds]: http://js4ds.org
+[html5-tags]: https://www.w3schools.com/TAGS/default.asp
 
 {% include links.md %}
