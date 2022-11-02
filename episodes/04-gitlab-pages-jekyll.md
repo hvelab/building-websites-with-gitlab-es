@@ -25,7 +25,7 @@ and its scripting language called [Liquid](https://shopify.github.io/liquid/basi
 
 ## Global Parameters
 
-Also in this case, ee will trigger and customise our deployment from the `.gitlab-ci.yml` file. You can decide to edit your
+Also in this case, we will trigger and customise our deployment from the `.gitlab-ci.yml` file. You can decide to edit your
 previous version of the `group-website` repository, but we suggest to create a new one. Follow the steps in
 "Setting up a project" in the [introduction](https://grp-bio-it-workshops.embl-community.io/building-websites-with-gitlab/01-introduction/index.html)
 if you want to do so. Create/change the `.gitlab-ci.yml` file content with:

@@ -66,7 +66,7 @@ with the default option provided. Commit this change.
 > ## Writing a Commit Message
 >
 > A commit message is a short, descriptive, and specific comment that will help us remember later on what we did and why.
-> You find more about writing commit message in [this section][swc-git-novice-episode-track-changes] of the Git-novice lesson.
+> You find more about writing commit message in [this section](https://swcarpentry.github.io/git-novice/04-changes/index.html) of the Git-novice lesson.
 >
 {: .callout}
 
@@ -124,20 +124,7 @@ You can then click the preview tab again to see how the formatting renders.
 >
 > In some cases you may find that **soft line breaks** do introduce a `<br/>`.
 > This can happen when using different [markdown flavors](#markdown-flavours).
->
-> See for instance:
-> ~~~
-> Soft line
-> break
->
-> Hard line
-> break
-> ~~~
 > {: .language-markdown }
->
-> That produces:
->
-> ![Difference between soft and hard breaks](../fig/soft_hard_markdown_line_break.png){: .image-with-shadow width="200px" }
 >
 {: .callout}
 
@@ -193,8 +180,6 @@ You can commit these changes to save them. But first, let's do an exercise to tr
 > [carpentries]: https://carpentries.org/
 > ~~~
 > {: .language-markdown }
->
-> and helps to follow the [DRY principle][dry-principle], avoiding redundant specification of information.
 >
 {: .callout}
 
