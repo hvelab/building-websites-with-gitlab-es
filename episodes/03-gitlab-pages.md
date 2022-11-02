@@ -53,12 +53,12 @@ We will start with the simplest example, a plain HTML site with GitLab pages. Cr
 pages:
   stage: deploy
   script:
-  - echo 'Nothing to do...'
+    - echo 'Nothing to do...'
   artifacts:
     paths:
-    - public
+      - public
   only:
-  - main
+    - main
 ~~~
 {: .language-yaml }
 
