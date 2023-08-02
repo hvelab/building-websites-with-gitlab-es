@@ -5,11 +5,15 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 ---
 
 > ## Prerequisites
-> Before following this lesson, learners should be able to:
+> Before following this lesson, learners should ideally be able to:
 >
 > 1. create a project on [GitLab][gitlab] / [EMBL GitLab][embl-gitlab].
 > 1. clone a local copy of a project with Git, add and commit modified files, and push/pull changes between local and remote repositories.
 > 1. execute commands in the shell.
+>
+> None of the prerequisite above is absolutely necessary to follow the lesson.
+> They will, however, be necessary to efficiently manage the website development from your
+> laptop and test how it looks before creating official versions.
 >
 > If you'd like to learn any of the skills listed above,
 > the [Software Carpentry][swc] lessons on

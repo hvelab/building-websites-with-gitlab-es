@@ -2,20 +2,23 @@
 title: Setup
 ---
 
+**Required**
+
 Prior to the workshop you will need to setup a free account for [GitLab](https://gitlab.com/)
 or (_preferentially_) on the local EMBL instance [git.embl.de](https://git.embl.de/).
+If you need assistance with loggin in the EMBL GitLab platform,
+check [these instructions](https://grp-bio-it.embl-community.io/blog/posts/2021-01-29-mattermost-embl-chat/#login-via-gitlab).
 
-Please see [this section of the workshop template][workshop-setup]
-for instructions on installing Git.
+**Optional**
 
-We'll do our work in the `Desktop` folder so make sure you change your working directory to it with:
+During the course we will teach how to use GitLab in the online platform, but not how to use
+Git locally on your laptop. Still, knowing Git might be useful to take your web dev skills
+next level. So, please consider installing the Bash Shell and Git in your laptop, following
+[these instructions][workshop-setup] from The Carpentries.
 
-~~~
-$ cd
-$ cd Desktop
-~~~
-{: .language-bash}
+Once you have Git and the Bash Shell installed, you are all set to follow
+[these training materials](https://swcarpentry.github.io/git-novice/) and learn the basis of Git.
 
-[workshop-setup]: https://carpentries.github.io/workshop-template/#git
+[workshop-setup]: https://carpentries.github.io/workshop-template/#the-bash-shell
 
 {% include links.md %}
