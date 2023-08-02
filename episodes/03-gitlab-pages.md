@@ -23,7 +23,7 @@ keypoints:
 The key to having your website up and running as expected is the GitLab CI configuration file, called `.gitlab-ci.yml`.
 This file configures how your website will be built. It is written in _YAML_, which has its own syntax that we will not
 explain into details, so we recommend you follow this quick start guide before setting it up.
-To work correclty, it needs to be placed at your root directory, i.e. at the same level of our README file, in the main project folder.
+To work correctly, it needs to be placed at your root directory, i.e. at the same level of our README file, in the main project folder.
 
 The most important fact is that with GitLab CI, you take control over your builds. They won't be in an invisible black
 box where you don't know what is going on! You will be able to see any build running live by navigating to your
@@ -31,23 +31,48 @@ project's `Pipelines` (we will do this later). You can also add any command to y
 you to do in the remote server pretty much anything you do on your local machine. We will how some examples on how to run
 custom build commands through the `.gitlab-ci.yml.` file later on in this lesson.
 
-It is time to start configuring our project for deployment. In this lesson, we will work on our local instance of the
-project (in your own computer), to be able to add to each commit changes in multiple files simultaneously. To do so,
-you will need to _clone_ your repository locally, check the [git novice](https://swcarpentry.github.io/git-novice/)
-lesson if you need to review what the `git clone` command does and how to `git push` changes from local to remote projects.
+> ## Work locally or in GitLab
+>
+> This lesson isn't aiming to teach Git and how to work locally (in your laptop) on a project versioned and
+> managed in Git. If you have a basic understanding of Git, however, you can do the next steps locally
+> to learn how to properly develop a website: testing it locally and only committing and pushing significant
+> versions of it. On the contrary, working on the online platform will force us to commit versions that
+> will not be very meaningful, for the sake of learning.
+>
+> If you have a basic understanding of Git, configuring a local project for deployment.
+> _Clone_ your repository locally (check the [git novice](https://swcarpentry.github.io/git-novice/) lesson if you need to review what
+> the `git clone` command does and how to `git push` changes from local to remote projects).
+> In short, you should now run, from a terminal:
+> ~~~
+> git clone https://git.embl.de/<your username>/group-website.git
+> cd group-website
+> ~~~
+> {: .language-bash }
+> And keep working in your cloned directory. You can add and edit your files via `vim` or from
+> any editor that you like - it doesn't have to be launched from the terminal, but remember to
+> keep the terminal open for when you will have to push the changes back to the remote.
+{: .callout }
 
-In short, you should now run, from a terminal:
-~~~
-git clone https://git.embl.de/<your username>/group-website.git
-cd group-website
-~~~
-{: .language-bash }
+We will start with the simplest example, a plain HTML site with GitLab pages.
 
-And keep working in your cloned directory. You can add and edit your files via `vim` or from any editor that you like -
-it doesn't have to be launched from the terminal, but remember to keep the terminal open for when you will have to push
-the changes back to the remote.
+Let's create the `.gitlab-ci.yml` file directly in our GitLab project online. We will need to work
+on multiple files. To do so, we want to open the Web IDE by clicking the button on the top right
+of our project: `Edit > Web IDE`.
 
-We will start with the simplest example, a plain HTML site with GitLab pages. Create your `.gitlab-ci.yml` file and write in it:
+![Edit IDE](../fig/Edit-Web-IDE.png){: .image-with-shadow width="600px" }
+
+If this is the first time that you open it, a customisation panel
+will appear. Ignore it for now, but know that the _look-and-feel_ of the next screenshots might
+differ from what you see based on the default template. You should however have the same menus and
+files available for use. In particular, the `EXPLORER` (a file explorer) on the right side lists
+files and folders in your repository (at the moment, there should only be the `README` file), and
+the panel on the right shows the content of such files when you open them.
+
+Over the mouse on the name of your project in the `EXPLORER` to see a small menu including an icon
+to add files to the folder. Click on that and create a `.gitlab-ci.yml` file. Then, fill it with
+the following content:
+
+Create your `.gitlab-ci.yml` file and write in it:
 
 ~~~
 pages:
@@ -84,15 +109,20 @@ in public, hence the "script" configuration is basically none (it just echoes "N
 >
 {: .callout}
 
-Next, we will create the `public` folder, containing an `index.html` file. You can do so from the terminal through:
+Next, we will create the `public` folder (use the new folder icon in the `EXPLORER` menu),
+containing an `index.html` file.
 
-~~~
-mkdir public
-cat > public/index.html
-~~~
-{: .language-bash }
+> ## Work locally or in GitLab
+> If you are working locally, you can do so from the terminal through:
+>
+> ~~~
+> mkdir public
+> cat > public/index.html
+> ~~~
+> {: .language-bash }
+{: .callout }
 
-Populate the new file write this content:
+Populate the new file `index.html` with this content:
 
 ~~~
 <html>
@@ -106,37 +136,52 @@ Populate the new file write this content:
 ~~~
 {: .language-html }
 
-Before we go on with the chapter, try to imagine what will displayed in the resulting webpage. You can draw it in a piece
-of paper.
+Before we go on with the chapter, try to imagine what will be the final display in the resulting webpage.
+You can draw it in a piece of paper.
 
-Now, commit and push your changes. You can do so from the main folder through:
+> ## Work locally or in GitLab
+> If you are working locally, now commit and push your changes.
+> You can do so from the main project folder through:
+> ~~~
+> git add .
+> git commit -m "simple html in public"
+> git push -u origin main
+> ~~~
+> {: .language-bash }
+{: .callout }
 
-~~~
-git add .
-git commit -m "simple html in public"
-git push -u origin main
-~~~
-{: .language-bash }
+If you created the `.gitlab-ci.yml` file, and the `public` folder containing the `index.html` file,
+you should see all of them in the `EXPLORER`. Now, let's save the first version of our project (commit),
+by selecting the `Source control` menu on the left side.
 
-Go back to your remote project in GitLab (in the web browser). The screenshot below shows how it should look like:
+![IDE version control button](../fig/IDE-version-control.png){: .image-with-shadow width="600px" }
+
+This will change the panel on the left, which will list the files that we changed (two files added)
+and expect you to input a commit message (a short description of the project version that you are
+committing) in the textbox above. Our commit message in this case could be: "Deploy simple HTML through
+GitLab pipeline". Input this or another message, and then `Commit to 'main'`.
+
+![IDE version control](../fig/IDE-commit-ready.png){: .image-with-shadow width="600px" }
+
+Go back to your remote project in GitLab. The screenshot below shows how it should look like:
 
 ![Simple HTML project screenshot](../fig/simple_html_remote.png){: .image-with-shadow width="600px" }
 
-The `public` folder contains the `index.html` file. The push command you just launched should have triggered your first
-pipeline. On the menu on the left, choose `CI/CD > Pipelines` to visualise it.
+The `public` folder contains the `index.html` file. The push command you just launched should
+have triggered your first pipeline. On the menu on the left, choose `Build > Pipelines` to visualise it.
 
 ![First running pipeline](../fig/first_pipeline_running.png){: .image-with-shadow width="600px" }
 
 Since we stopped and checked what our remote folder looked like, your pipeline may already be
 ![passed](../fig/passed.png){: .image-with-shadow width="100px" }. If not, just wait until it becomes so.
 
-Your first website was deployed successfully! Wonder where you can see it? Go to `Settings > Pages`. The URL of your
-website is reported under `Access pages`. It should be: `https://<your user name>.embl-community.io/group-website`.
+Your first website was deployed successfully! Wonder where you can see it? Go to `Deploy > Pages`.
+The URL of your website is reported there. It should be: `https://<your user name>.embl-community.io/group-website`.
 
 ![The Page URL in Settings>Pages](../fig/website_url_pages.png){: .image-with-shadow width="600px" }
 
 The screenshot below also contains an interesting alert. Always read this type of messages prompted by the GitLab
-interface, this are usually relevant to you. It says "Access Control is enabled for this Pages website;
+interface, these are usually relevant to you. It says "Access Control is enabled for this Pages website;
 only authorized users will be able to access it. To make your website publicly available, navigate to your
 project's Settings > General > Visibility and select Everyone in pages section." It also links to further documentation
 if you want to know more. Follow the instructions if you would like to make your website public.
