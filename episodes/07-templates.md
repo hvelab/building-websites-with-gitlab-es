@@ -2,22 +2,25 @@
 title: Plantillas GitLab
 teaching: 0
 exercises: 0
-questions:
-- Where can I find pre-built projects/themes for my site?
-objectives:
-- Find and fork pre-existing templates to determine the technologies behind a project
-  and the styles of the deriving website
-keypoints:
-- You can find many pre-existing templates for sites on the Internet
-- You can find the presented themes for sites in our local GitLab
-- You can avoid duplicated effort by basing new layouts on previous ones
 ---
 
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Find and fork pre-existing templates to determine the technologies behind a project and the styles of the deriving website
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- Where can I find pre-built projects/themes for my site?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Plantillas Bio-IT
 
 Las plantillas que hemos desarrollado juntos están disponibles en nuestra plataforma
 GitLab:
+
 - [Plain HTML template](https://git.embl.de/grp-bio-it/template_pages_html)
 - [Plantilla Jekyll](https://git.embl.de/grp-bio-it/template-pages-jekyll)
 - [Plantilla Sphinx](https://git.embl.de/grp-bio-it/template-pages-sphinx)
@@ -30,21 +33,21 @@ proyecto, deberías **forkearlos**. Si lo haces para desarrollar tu propio proye
 para contribuir a la plantilla en sí, debes **eliminar la relación de bifurcación**.
 Repasemos juntos el proceso.
 
-![fork a repository through the Fork button](../fig/template-pages-fork.png)
+![](fig/template-pages-fork.png){alt='fork a repository through the Fork button'}
 
 Fork un proyecto haciendo clic en el botón "Fork" a la derecha del título del proyecto.
 Esto abrirá un menú (mostrado abajo) muy similar al que aparece cuando abres un nuevo
 proyecto. Puedes decidir mantener tu proyecto en privado y editar el título y la
 descripción. También puede colocarlo en el grupo/espacio de nombres correspondiente.
 
-![el menú del proyecto fork](../fig/fork-project-menu.png)
+![](fig/fork-project-menu.png){alt='el menú del proyecto fork'}
 
 Una vez que haya terminado, por favor, elimine la relación de bifurcación. Puede editar
 la configuración del proyecto en el menú de la izquierda en la página del proyecto,
 siga: `Settings > General > Advanced` y luego desplácese hacia abajo hasta la tarjeta
 "Eliminar relación de bifurcación".
 
-![remove fork relationship](../fig/advanced-settings.png)
+![](fig/advanced-settings.png){alt='remove fork relationship'}
 
 Una vez hecho esto, puedes clonar tu repositorio localmente y empezar a editar la
 plantilla. Si necesitas una recapitulación sobre clonación, fork, push y pull en Git por
@@ -59,6 +62,7 @@ múltiples tecnologías. También en estos casos, es una buena práctica elimina
 relación fork si tu objetivo es utilizar la plantilla para el desarrollo de tu propio
 sitio web, y no contribuir a la plantilla en sí. Algunos ejemplos de plantillas que
 encontrarás en este repositorio son:
+
 - [**courseware-template**](https://gitlab.com/pages/courseware-template), una plantilla
   basada en Jekyll para el sitio web de un curso. Puede verla en acción
   [aquí](https://courseware-as-code.gitlab.io/courseware-tutorial/). Incluye estilos
@@ -77,5 +81,14 @@ casos de uso. Por último, consulta el siguiente capítulo (extra) para saber c�
 los errores en la ejecución de la canalización y poder solucionar posibles errores de
 CI/CD
 
-{% include links.md %}
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- You can find many pre-existing templates for sites on the Internet
+- You can find the presented themes for sites in our local GitLab
+- You can avoid duplicated effort by basing new layouts on previous ones
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
