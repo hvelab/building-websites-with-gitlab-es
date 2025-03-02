@@ -1,78 +1,92 @@
 ---
-title: "Hosting Pages on GitLab"
+title: Alojar páginas en GitLab
 teaching: 0
 exercises: 0
 questions:
-- "How do I publish my pages via GitLab?"
+- How do I publish my pages via GitLab?
 objectives:
-- "publish HTML on the web with GitLab Pages"
+- publish HTML on the web with GitLab Pages
 keypoints:
-- "GitLab serves pages in your project according to a configuration file called `.gitlab-ci.yml`"
+- GitLab serves pages in your project according to a configuration file called `.gitlab-ci.yml`
 ---
 
-# GitLab pages
 
-> ## Static websites only
+# Páginas de GitLab
+
+> ## Sólo sitios web estáticos
 >
-> As anticipated by the previous chapters, to publish a website with GitLab Pages you can use several different technologies
-> like Jekyll, Gatsby, Hugo, Middleman, Harp, Hexo, and Brunch, just to name a few. You can also publish any _static_ website
-> written directly in plain HTML, CSS, and JavaScript. Pages does not support _dynamic_ server-side processing, for
-> instance, as `.php` and `.asp` requires.
+> Como se anticipó en los capítulos anteriores, para publicar un sitio web con GitLab
+> Pages puedes utilizar varias tecnologías diferentes como Jekyll, Gatsby, Hugo,
+> Middleman, Harp, Hexo, y Brunch, sólo por nombrar algunas. También puedes publicar
+> cualquier sitio web _estático_ escrito directamente en HTML plano, CSS y JavaScript.
+> Pages no soporta el procesamiento _dinámico_ del lado del servidor, por ejemplo, como
+> requieren `.php` y `.asp`.
+>
 {: .callout}
 
-The key to having your website up and running as expected is the GitLab CI configuration file, called `.gitlab-ci.yml`.
-This file configures how your website will be built. It is written in _YAML_, which has its own syntax that we will not
-explain into details, so we recommend you follow this quick start guide before setting it up.
-To work correctly, it needs to be placed at your root directory, i.e. at the same level of our README file, in the main project folder.
+La clave para que tu sitio web funcione como se espera es el archivo de configuración de
+GitLab CI, llamado `.gitlab-ci.yml`. Este archivo configura cómo se construirá tu sitio
+web. Está escrito en _YAML_, que tiene su propia sintaxis que no explicaremos en
+detalle, por lo que te recomendamos que sigas esta guía de inicio rápido antes de
+configurarlo. Para que funcione correctamente, debe colocarse en su directorio raíz, es
+decir, al mismo nivel que nuestro archivo README, en la carpeta principal del proyecto.
 
-The most important fact is that with GitLab CI, you take control over your builds. They won't be in an invisible black
-box where you don't know what is going on! You will be able to see any build running live by navigating to your
-project's `Pipelines` (we will do this later). You can also add any command to your `.gitlab-ci.yml` script. This allows
-you to do in the remote server pretty much anything you do on your local machine. We will how some examples on how to run
-custom build commands through the `.gitlab-ci.yml.` file later on in this lesson.
+El hecho más importante es que con GitLab CI, tomas el control sobre tus compilaciones.
+No estarán en una caja negra invisible donde no sabes lo que está pasando Serás capaz de
+ver cualquier compilación ejecutándose en vivo navegando a la `Pipelines` de tu proyecto
+(lo haremos más adelante). También puedes añadir cualquier comando a tu script
+`.gitlab-ci.yml`. Esto le permite hacer en el servidor remoto prácticamente cualquier
+cosa que haga en su máquina local. Más adelante veremos algunos ejemplos de cómo
+ejecutar comandos de construcción personalizados a través del archivo `.gitlab-ci.yml.`.
 
-> ## Work locally or in GitLab
+> ## Trabaja localmente o en GitLab
 >
-> This lesson isn't aiming to teach Git and how to work locally (in your laptop) on a project versioned and
-> managed in Git. If you have a basic understanding of Git, however, you can do the next steps locally
-> to learn how to properly develop a website: testing it locally and only committing and pushing significant
-> versions of it. On the contrary, working on the online platform will force us to commit versions that
-> will not be very meaningful, for the sake of learning.
+> Esta lección no pretende enseñar Git y cómo trabajar localmente (en tu portátil) en un
+> proyecto versionado y gestionado en Git. Sin embargo, si tienes una comprensión básica
+> de Git, puedes hacer los siguientes pasos localmente para aprender a desarrollar
+> correctamente un sitio web: probarlo localmente y sólo confirmar y empujar versiones
+> significativas del mismo. Por el contrario, trabajar en la plataforma en línea nos
+> obligará a cometer versiones que no serán muy significativas, en aras del aprendizaje.
 >
-> If you have a basic understanding of Git, configuring a local project for deployment.
-> _Clone_ your repository locally (check the [git novice](https://swcarpentry.github.io/git-novice/) lesson if you need to review what
-> the `git clone` command does and how to `git push` changes from local to remote projects).
-> In short, you should now run, from a terminal:
+> Si usted tiene una comprensión básica de Git, la configuración de un proyecto local
+> para el despliegue. _Clone_ su repositorio localmente (consulte la lección [git novice](https://swcarpentry.github.io/git-novice/) si necesita repasar lo que hace el
+> comando `git clone` y cómo `git push` cambios de proyectos locales a remotos). En
+> resumen, ahora deberías ejecutar, desde un terminal:
 > ~~~
 > git clone https://git.embl.de/<your username>/group-website.git
 > cd group-website
 > ~~~
 > {: .language-bash }
-> And keep working in your cloned directory. You can add and edit your files via `vim` or from
-> any editor that you like - it doesn't have to be launched from the terminal, but remember to
-> keep the terminal open for when you will have to push the changes back to the remote.
+>
+> Y sigue trabajando en tu directorio clonado. Puedes añadir y editar tus archivos a
+> través de `vim` o desde cualquier editor que te guste - no tiene que ser lanzado desde
+> el terminal, pero recuerda mantener el terminal abierto para cuando tengas que empujar
+> los cambios de nuevo al remoto.
+>
 {: .callout }
 
-We will start with the simplest example, a plain HTML site with GitLab pages.
+Empezaremos con el ejemplo más simple, un sitio HTML plano con páginas GitLab.
 
-Let's create the `.gitlab-ci.yml` file directly in our GitLab project online. We will need to work
-on multiple files. To do so, we want to open the Web IDE by clicking the button on the top right
-of our project: `Edit > Web IDE`.
+Vamos a crear el archivo `.gitlab-ci.yml` directamente en nuestro proyecto GitLab
+online. Tendremos que trabajar en varios archivos. Para ello, queremos abrir el IDE Web
+haciendo clic en el botón en la parte superior derecha de nuestro proyecto: `Edit > Web
+IDE`.
 
 ![Edit IDE](../fig/Edit-Web-IDE.png){: .image-with-shadow width="600px" }
 
-If this is the first time that you open it, a customisation panel
-will appear. Ignore it for now, but know that the _look-and-feel_ of the next screenshots might
-differ from what you see based on the default template. You should however have the same menus and
-files available for use. In particular, the `EXPLORER` (a file explorer) on the right side lists
-files and folders in your repository (at the moment, there should only be the `README` file), and
-the panel on the right shows the content of such files when you open them.
+Si es la primera vez que lo abre, aparecerá un panel de personalización. Ignórelo por
+ahora, pero sepa que el _look-and-feel_ de las siguientes capturas de pantalla puede
+diferir de lo que ve basado en la plantilla por defecto. Sin embargo, deberías tener los
+mismos menús y archivos disponibles para su uso. En particular, el `EXPLORER` (un
+explorador de archivos) a la derecha lista los archivos y carpetas de su repositorio
+(por el momento, sólo debería haber el archivo `README`), y el panel de la derecha
+muestra el contenido de dichos archivos cuando los abre.
 
-Over the mouse on the name of your project in the `EXPLORER` to see a small menu including an icon
-to add files to the folder. Click on that and create a `.gitlab-ci.yml` file. Then, fill it with
-the following content:
+Pasa el ratón por encima del nombre de tu proyecto en la carpeta `EXPLORER` para ver un
+pequeño menú que incluye un icono para añadir archivos a la carpeta. Haga clic en él y
+cree un archivo `.gitlab-ci.yml`. A continuación, rellénalo con el siguiente contenido
 
-Create your `.gitlab-ci.yml` file and write in it:
+Crea tu fichero `.gitlab-ci.yml` y escribe en él:
 
 ~~~
 pages:
@@ -85,44 +99,51 @@ pages:
   only:
     - main
 ~~~
+>
 {: .language-yaml }
 
-What this code is doing is creating a job called "pages" telling GitLab to __deploy the website__ content in `public`,
-__whenever a commit is pushed__ and __only to the main branch__. It doesn't have much to do but looking at the content
-in public, hence the "script" configuration is basically none (it just echoes "Nothing to do" to the terminal).
+Lo que hace este código es crear un trabajo llamado "pages" que le dice a GitLab que
+__despliegue el contenido del sitio web__ en `public`, __siempre que se envíe un
+commit__ y __sólo a la rama principal__. No tiene mucho que hacer más que mirar el
+contenido en público, de ahí que la configuración del "script" sea básicamente ninguna
+(sólo hace eco de "Nada que hacer" en el terminal).
 
-> ## Validating the gitlab-ci.yml file
+> ## Validando el archivo gitlab-ci.yml
 >
-> Before you push any `.gitlab-ci.yml` to your project, you can validate its syntax with the tool called
-> [CI Lint](https://docs.gitlab.com/ee/ci/lint.html). You need to be logged into your account to have access to this tool.
-> It's found by navigating to your project's Pipelines: there is a button at the top-right of your screen. You can
-> read through the [full documentation](http://doc.gitlab.com/ee/ci/yaml/README.html) for .gitlab-ci.yml for more information.
->
-{: .callout}
-
-> ## Git branches and GitLab CI files
->
-> You can have a distinct `.gitlab-ci.yml` for each project - but you could even have distinct GitLab CI configurations
-> for each branch. This means you could test your script in parallel branches before pushing to your main branch.
-> If the build succeeds, you merge. If it doesn't, you can make adjustments and try building again without messing up
-> your main branch.
+> Antes de añadir cualquier `.gitlab-ci.yml` a su proyecto, puede validar su sintaxis
+> con la herramienta llamada [CI Lint](https://docs.gitlab.com/ee/ci/lint.html).
+> Necesitas estar conectado a tu cuenta para tener acceso a esta herramienta. Se
+> encuentra navegando a los Pipelines de tu proyecto: hay un botón en la parte superior
+> derecha de tu pantalla. Puedes leer la [documentación completa](http://doc.gitlab.com/ee/ci/yaml/README.html) de .gitlab-ci.yml para más
+> información.
 >
 {: .callout}
 
-Next, we will create the `public` folder (use the new folder icon in the `EXPLORER` menu),
-containing an `index.html` file.
+> ## Ramas Git y archivos GitLab CI
+>
+> Puedes tener un `.gitlab-ci.yml` distinto para cada proyecto - pero incluso podrías
+> tener distintas configuraciones de GitLab CI para cada rama. Esto significa que
+> podrías probar tu script en ramas paralelas antes de enviarlo a tu rama principal. Si
+> la compilación tiene éxito, se fusiona. Si no, puedes hacer ajustes y tratar de
+> construir de nuevo sin estropear tu rama principal.
+>
+{: .callout}
 
-> ## Work locally or in GitLab
-> If you are working locally, you can do so from the terminal through:
+A continuación, crearemos la carpeta `public` (usa el icono de nueva carpeta en el menú
+`EXPLORER`), que contiene un archivo `index.html`.
+
+> ## Trabaja localmente o en GitLab
+> Si estás trabajando en local, puedes hacerlo desde el terminal a través de:
 >
 > ~~~
 > mkdir public
 > cat > public/index.html
 > ~~~
 > {: .language-bash }
+>
 {: .callout }
 
-Populate the new file `index.html` with this content:
+Rellena el nuevo fichero `index.html` con este contenido:
 
 ~~~
 <html>
@@ -134,80 +155,96 @@ Populate the new file `index.html` with this content:
     </body>
 </html>
 ~~~
+>
 {: .language-html }
 
-Before we go on with the chapter, try to imagine what will be the final display in the resulting webpage.
-You can draw it in a piece of paper.
+Antes de seguir con el capítulo, intenta imaginar cuál será la visualización final en la
+página web resultante. Puedes dibujarlo en un papel.
 
-> ## Work locally or in GitLab
-> If you are working locally, now commit and push your changes.
-> You can do so from the main project folder through:
+> ## Trabaja localmente o en GitLab
+> Si estás trabajando localmente, ahora confirma y envía tus cambios. Puedes hacerlo
+> desde la carpeta principal del proyecto a través de:
 > ~~~
 > git add .
 > git commit -m "simple html in public"
 > git push -u origin main
 > ~~~
 > {: .language-bash }
+>
 {: .callout }
 
-If you created the `.gitlab-ci.yml` file, and the `public` folder containing the `index.html` file,
-you should see all of them in the `EXPLORER`. Now, let's save the first version of our project (commit),
-by selecting the `Source control` menu on the left side.
+Si has creado el archivo `.gitlab-ci.yml`, y la carpeta `public` que contiene el archivo
+`index.html`, deberías verlos todos en la carpeta `EXPLORER`. Ahora, vamos a guardar la
+primera versión de nuestro proyecto (commit), seleccionando el menú `Source control` en
+el lado izquierdo.
 
-![IDE version control button](../fig/IDE-version-control.png){: .image-with-shadow width="600px" }
+![Botón de control de versiones IDE](../fig/IDE-version-control.png){: .image-with-shadow width="600px" }
 
-This will change the panel on the left, which will list the files that we changed (two files added)
-and expect you to input a commit message (a short description of the project version that you are
-committing) in the textbox above. Our commit message in this case could be: "Deploy simple HTML through
-GitLab pipeline". Input this or another message, and then `Commit to 'main'`.
+Esto cambiará el panel de la izquierda, que listará los archivos que hemos cambiado (dos
+archivos añadidos) y esperará que introduzcas un mensaje de confirmación (una breve
+descripción de la versión del proyecto que estás confirmando) en el cuadro de texto de
+arriba. Nuestro mensaje de confirmación en este caso podría ser: "Deploy simple HTML
+through GitLab pipeline". Introduzca este u otro mensaje, y luego `Commit to 'main'`.
 
 ![IDE version control](../fig/IDE-commit-ready.png){: .image-with-shadow width="600px" }
 
-Go back to your remote project in GitLab. The screenshot below shows how it should look like:
+Vuelve a tu proyecto remoto en GitLab. La siguiente captura de pantalla muestra cómo
+debería verse:
 
-![Simple HTML project screenshot](../fig/simple_html_remote.png){: .image-with-shadow width="600px" }
+![Captura de pantalla del proyecto HTML simple](../fig/simple_html_remote.png){: .image-with-shadow width="600px" }
 
-The `public` folder contains the `index.html` file. The push command you just launched should
-have triggered your first pipeline. On the menu on the left, choose `Build > Pipelines` to visualise it.
+La carpeta `public` contiene el archivo `index.html`. El comando push que acabas de
+lanzar debería haber activado tu primer pipeline. En el menú de la izquierda, seleccione
+`Build > Pipelines` para visualizarlo.
 
-![First running pipeline](../fig/first_pipeline_running.png){: .image-with-shadow width="600px" }
+![Primera tubería en ejecución](../fig/first_pipeline_running.png){: .image-with-shadow width="600px" }
 
-Since we stopped and checked what our remote folder looked like, your pipeline may already be
-![passed](../fig/passed.png){: .image-with-shadow width="100px" }. If not, just wait until it becomes so.
+Desde que nos detuvimos y comprobamos cómo era nuestra carpeta remota, puede que tu
+pipeline ya esté ![passed](../fig/passed.png){: .image-with-shadow width="100px" }. Si
+no es así, espera a que lo sea.
 
-Your first website was deployed successfully! Wonder where you can see it? Go to `Deploy > Pages`.
-The URL of your website is reported there. It should be: `https://<your user name>.embl-community.io/group-website`.
+¡Tu primer sitio web ha sido desplegado con éxito! ¿Te preguntas dónde puedes verlo?
+Vaya a `Deploy > Pages`. La URL de su sitio web se informa allí. Debería ser:
+`https://<your user name>.embl-community.io/group-website`.
 
-![The Page URL in Settings>Pages](../fig/website_url_pages.png){: .image-with-shadow width="600px" }
+![La URL de la página en Configuración>Páginas](../fig/website_url_pages.png){: .image-with-shadow width="600px" }
 
-The screenshot below also contains an interesting alert. Always read this type of messages prompted by the GitLab
-interface, these are usually relevant to you. It says "Access Control is enabled for this Pages website;
-only authorized users will be able to access it. To make your website publicly available, navigate to your
-project's Settings > General > Visibility and select Everyone in pages section." It also links to further documentation
-if you want to know more. Follow the instructions if you would like to make your website public.
+La siguiente captura de pantalla también contiene una alerta interesante. Lee siempre
+este tipo de mensajes que muestra la interfaz de GitLab, suelen ser relevantes para ti.
+Dice "El control de acceso está habilitado para este sitio web de Pages; sólo los
+usuarios autorizados podrán acceder a él. Para hacer que tu sitio web esté disponible
+públicamente, navega a Configuración > General > Visibilidad de tu proyecto y selecciona
+Todos en la sección de páginas." También enlaza con más documentación si quieres saber
+más. Sigue las instrucciones si quieres hacer pública tu página web.
 
-Wheter it's public or not, we should be able to visualise our own website. Click on the link, and here it is:
+Sea pública o no, deberíamos poder visualizar nuestra propia web. Pincha en el enlace, y
+aquí lo tienes:
 
 ![Simple website view](../fig/html_simple_view.png){: .image-with-shadow width="600px" }
 
-> ## Exercise: Compare with your sketch
-> Does the website you just deployed look as you thought it would, given the html code in the index file?
-> Did you think that something else would be shown? Discuss with the colleague next to you.
+> ## Ejercicio: Compara con tu boceto
+> ¿Tiene el sitio web que acabas de desplegar el aspecto que pensabas que tendría, dado
+> el código html del archivo index? ¿Pensabas que se mostraría otra cosa? Coméntalo con
+> el compañero que tienes al lado.
 >
 {: .challenge }
 
-> ## Exercise: The plain-html template
-> GitLab provides a series of templates of web pages deployed through Pages. One of them is called "plain-html", you
-> can access it at [this link](https://gitlab.com/pages/plain-html). The general structure is quite similar to the one
-> we just used. Go to the `public` folder. There are two files here, one `style.css` file and one `index.html` file.
+> ## Ejercicio: La plantilla plain-html
+> GitLab proporciona una serie de plantillas de páginas web desplegadas a través de
+> Pages. Una de ellas se llama "plain-html", puedes acceder a ella en [este enlace](https://gitlab.com/pages/plain-html). La estructura general es bastante
+> similar a la que acabamos de utilizar. Vaya a la carpeta `public`. Aquí hay dos
+> archivos, uno `style.css` y otro `index.html`.
 >
-> We will now go into the detail of `.css` file functioning in this lesson, but it might be interesting now to have a look
-> at its syntax and content. This type of file is used to style HTML content. This specific file provides styling
-> instructions for three elements: the `body`, the `navbar` and the link text (`a`) within the navbar, that changes
-> color when the mouse is over it (`a:hover`). Don't worry now about understanding how this works exactly, but when you
-> will visualise this page, remember to go with the mouse over the navbar links to see this in action.
+> Entraremos en detalle en el funcionamiento del archivo `.css` en esta lección, pero
+> puede ser interesante ahora echar un vistazo a su sintaxis y contenido. Este tipo de
+> archivo se utiliza para dar estilo al contenido HTML. Este archivo específico
+> proporciona instrucciones de estilo para tres elementos: el `body`, el `navbar` y el
+> texto del enlace (`a`) dentro de la barra de navegación, que cambia de color cuando el
+> ratón está sobre él (`a:hover`). No te preocupes ahora por entender cómo funciona esto
+> exactamente, pero cuando vayas a visualizar esta página, recuerda pasar el ratón por
+> encima de los enlaces de la navbar para ver esto en acción.
 >
-> Now open the `index.html` file. Its content is reported below.
+> Ahora abre el archivo `index.html`. Su contenido se muestra a continuación.
 >
 > ~~~
 > <!DOCTYPE html>
@@ -235,39 +272,48 @@ Wheter it's public or not, we should be able to visualise our own website. Click
 > ~~~
 > {: .language-html }
 >
-> Time to sketch again! Draw the resulting webpage, provided this HTML file content. Hint: the navbar is a bar on
-> the top of the page, that allows us to navigate the website content.
+> ¡Es hora de dibujar de nuevo! Dibuja la página web resultante, siempre que el
+> contenido de este archivo HTML. Pista: la navbar es una barra en la parte superior de
+> la página, que nos permite navegar por el contenido de la web.
 >
-> Optional question: how is the `.css` file used? How does the website know which is the right file to read?
+> Pregunta opcional: ¿cómo se utiliza el archivo `.css`? ¿Cómo sabe el sitio web cuál es
+> el archivo correcto que debe leer?
 >
-> > ## Solution
+> > ## Solución
 > >
-> > You can go to the [deployed website](https://pages.gitlab.io/plain-html/) to check how does it look like.
-> > Here below a screenshot of the result:
+> > Puedes ir al [sitio web desplegado](https://pages.gitlab.io/plain-html/) para
+> > comprobar cómo queda. A continuación se muestra una captura de pantalla del
+> > resultado:
 > >
-> > ![Plain HTML template](../fig/plain-html-template-deployed.png){: .image-with-shadow width="600px" }
+> > ![Plain HTML template](../fig/plain-html-template-deployed.png){: .image-with-shadow
+> > width="600px" }
 > >
-> > Is there any difference with your sketch?
+> > ¿Hay alguna diferencia con tu boceto?
 > >
-> > Optional question: the `.css` file location is specified in the `.html` file, through:
-> > `<link rel="stylesheet" href="style.css">`.
+> > Pregunta opcional: la ubicación del fichero `.css` está especificada en el fichero
+> > `.html`, a través de: `<link rel="stylesheet" href="style.css">`.
+> >
 > >
 > {: .solution }
 {: .challenge }
 
-## Useful links
+## Enlaces útiles
 
-You have the minimal tools now to be able to play around with HTML and css. You can copy the two files
-from the last exercise [template](https://gitlab.com/pages/plain-html) into your repository and try to edit
-the text size, the navbar color, add links or text formatting. If you decide to fork this repository to experiment,
-please do as the authors ask in their README file (one more reason to consult the README files in each other projects
-and to compile them carefully): "If you forked this project for your own use, please go to your project's
-__Settings__ and remove the forking relationship, which won't be necessary unless you want to contribute back to
-the upstream project."
+Ya tienes las herramientas mínimas para poder jugar con HTML y css. Puedes copiar los
+dos archivos del último ejercicio [template](https://gitlab.com/pages/plain-html) en tu
+repositorio e intentar editar el tamaño del texto, el color de la barra de navegación,
+añadir enlaces o el formato del texto. Si decides hacer un fork de este repositorio para
+experimentar, por favor, haz lo que los autores piden en su archivo README (una razón
+más para consultar los archivos README de cada uno de los otros proyectos y compilarlos
+cuidadosamente): "Si ha bifurcado este proyecto para su propio uso, por favor vaya a
+__Settings__ de su proyecto y elimine la relación de bifurcación, lo cual no será
+necesario a menos que quiera contribuir de nuevo al proyecto upstream."
 
-An extensive tutorial about HTML elements, including examples of forms, media and links embedding, can be found at
-[w3schools](https://www.w3schools.com/html/default.asp). In addition to this one, many other resources provide
-HTML tutorials, you can definitely choose one that fits your tastes to learn more.
+En [w3schools](https://www.w3schools.com/html/default.asp) se puede encontrar un extenso
+tutorial sobre elementos HTML, que incluye ejemplos de incrustación de formularios,
+medios y enlaces. Además de éste, muchos otros recursos proporcionan tutoriales de HTML,
+sin duda puedes elegir uno que se adapte a tus gustos para aprender más.
 
 
 {% include links.md %}
+
