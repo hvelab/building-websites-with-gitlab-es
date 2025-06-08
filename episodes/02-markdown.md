@@ -6,14 +6,14 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- create simple pages of formatted text
-
+- crear páginas simples de texto formateado
+  
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can I write content for my webpages?
-- How do I link to other pages?
+- ¿Cómo puedo escribir contenido para mi página web?
+- ¿Cómo enlazo a otras páginas?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -266,10 +266,10 @@ ser tu nombre de usuario de GitLab, y el objetivo tu repositorio.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Markdown is an relatively easy way to write formatted text
-- Markdown and HTML tags can be used together in a single page
-- I recommend writing Markdown links 'reference-style'
-- The landing page for a website is conventionally named `index.md`
+- Markdown es una forma relativamente sencilla de escribir texto con formato
+- Se pueden usar etiquetas Markdown y HTML juntas en una misma página
+- Recomiendo escribir los enlaces en Markdown con el estilo de referencia
+- La página de inicio de un sitio web se nombra convencionalmente como `index.md` 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
