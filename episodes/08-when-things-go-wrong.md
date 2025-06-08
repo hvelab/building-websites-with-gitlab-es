@@ -6,13 +6,13 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Get feedback from GitLab about why a pipeline failed
+- Obtén feedback de GitLab sobre por qué ha fallado una pipeline
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How do I troubleshoot errors in the GitLab pipelines?
+- ¿Cómo soluciono errores en las pipelines de GitLab? 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -169,7 +169,7 @@ su página antes de continuar.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- If a pipeline fails, GitLab will provide you useful feedback on why
+- Si falla una pipeline, GitLab proveerá información útil sobre por qué
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
